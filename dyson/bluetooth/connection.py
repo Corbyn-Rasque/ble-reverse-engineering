@@ -3,11 +3,6 @@ from enum import Enum, auto
 from bleak import BleakClient, BleakScanner
 from bleak.backends.device import BLEDevice
 
-import asyncio
-from enum import Enum, auto
-from bleak import BleakClient, BleakScanner
-from bleak.backends.device import BLEDevice
-
 class State (Enum):
     IDLE          = auto()
     SCANNING      = auto()

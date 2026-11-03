@@ -43,7 +43,7 @@ class Parser:
                         self.parser     = State.PAYLOAD
                     else:
                         self.payload    = bytearray()
-                        self.machine    = State.HEADER_1
+                        self.parser    = State.HEADER_1
                 case State.PAYLOAD:
                     self.payload.append(byte)
                     if len(self.payload) >= self.expected:

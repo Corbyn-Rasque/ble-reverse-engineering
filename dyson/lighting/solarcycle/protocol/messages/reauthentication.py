@@ -1,5 +1,5 @@
 from dyson.lighting.types           import Outgoing, Incoming, ENDIAN
-from dyson.bluetooth.authorization  import Payload
+from dyson.lighting.solarcycle.protocol.authorization  import Payload
 
 class Key (Outgoing):
     header = b"\x06"

@@ -9,7 +9,7 @@ async def main():
     kettle = Kettle()
 
     output = open('OUTPUT.csv', 'w')
-    output.write('time,fahrenheight')
+    output.write('time,fahrenheit')
 
 
     def log_temp(old, new) -> None:

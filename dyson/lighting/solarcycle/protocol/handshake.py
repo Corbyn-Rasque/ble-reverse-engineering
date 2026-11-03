@@ -1,6 +1,6 @@
 from dyson.bluetooth.collector      import Collector
-from dyson.bluetooth.authorization  import Authenticate, State, ProtocolStateError
-from dyson.lighting.solarcycle.protocol.messages.reathentication import Key, Challenge, Response
+from dyson.lighting.solarcycle.protocol.authorization  import Authenticate, State, ProtocolStateError
+from dyson.lighting.solarcycle.protocol.messages.reauthentication import Key, Challenge, Response
 
 class Handshake:
     def __init__(self, guid: bytes, ltk: bytes):

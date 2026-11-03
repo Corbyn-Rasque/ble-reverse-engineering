@@ -80,7 +80,7 @@ class Parser:
             'kwargs': {
                 'action':   'store_true',
                 'dest':     'suppress',
-                'help':     'DDyson account language code (e.g. "en-US")'
+                'help':     'Dyson account language code (e.g. "en-US")'
             }
         },
         {

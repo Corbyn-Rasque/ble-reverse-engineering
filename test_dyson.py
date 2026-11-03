@@ -1,10 +1,10 @@
 import asyncio, os, time
-from time import sleep
 
 from dyson.product import Account
 from dyson.lighting.solarcycle.lamp import Lamp
 
 from dotenv import load_dotenv
+import logging
 
 load_dotenv()
 
@@ -14,11 +14,12 @@ LTK  = os.getenv('LTK') or ""
 NAME = os.getenv('NAME') or ""
 
 async def main():
-    account = Account(
-    guid=bytes.fromhex(GUID.replace("-", "")),
-    ltk=bytes.fromhex(LTK),
-)
+    logging.basicConfig(level=logging.DEBUG)
 
+    account = Account(
+        bytes.fromhex(GUID.replace("-", "")),
+        bytes.fromhex(LTK),
+    )
     lamp = Lamp(account)
 
     devices = await lamp.connection.scan(NAME)
@@ -29,7 +30,7 @@ async def main():
     device = devices[0]
 
 
-    # print(f"Connecting to {device.name} ({device.address})")
+    print(f"Connecting to {device.name} ({device.address})")
 
     start = time.time()
     await lamp.connect(device)
@@ -37,13 +38,13 @@ async def main():
 
     print(f"{end - start:0.1f}", 'seconds')
 
-    # print("Authenticated:", lamp.state.authenticated)
+    print("Authenticated:", lamp.state.authenticated)
 
     switch = False
     while(True):
         await lamp.power(switch)
         switch = not switch
-        sleep(1)
+        await asyncio.sleep(1)
 
     await lamp.connection.disconnect()
 

@@ -11,7 +11,7 @@ class Switch (IntEnum):
     ON  = 0x01
 
 class Unit (IntEnum):
-    CELCIUS     = 0x00
+    CELSIUS     = 0x00
     FAHRENHEIT  = 0x01
 
 type Callback[T] = Callable[[T | None, T | None], None]
