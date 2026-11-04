@@ -26,7 +26,7 @@ class Scale:
     NOTIFY = '49535343-1e4d-4bd9-ba61-23c647249616'
     PASSWORD = b'\xef\xdd\x0b' + b'012345678901234' + b'\x9am'
 
-    client: BleakClient
+    client: BleakClient | None
 
     weight:     float
     battery:    int
