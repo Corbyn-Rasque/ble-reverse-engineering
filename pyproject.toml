@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ble-device-clients"
+version = "0.1.0"
+description = "Async Python clients for the Dyson Solarcycle lamp and Fellow Stagg EKG+ kettle over Bluetooth LE"
+requires-python = ">=3.12"
+dependencies = ["bleak", "pycryptodome", "certifi"]
+
+[project.optional-dependencies]
+examples = ["python-dotenv"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["dyson*", "fellow*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
