@@ -3,6 +3,10 @@ from enum import IntEnum
 import fellow.stagg.state as state
 from fellow.stagg.message import MESSAGES
 
+import logging
+log = logging.getLogger(__name__)
+
+
 class State (IntEnum):
     HEADER_1 = 0
     HEADER_2 = 1
@@ -50,5 +54,5 @@ class Parser:
                         try:
                             MESSAGES[self.type].parse(self.payload, self.kettle)
                         except (ValueError, IndexError) as e:
-                            print(f"Parse error for message {self.type:#04x}: {e} (payload: {self.payload.hex()})")
+                            log.warning("Parse error for message %#04x: %s (payload: %s)", self.type, e, self.payload.hex())
                         self.parser = State.HEADER_1

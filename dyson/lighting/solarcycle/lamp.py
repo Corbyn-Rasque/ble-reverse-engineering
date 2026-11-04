@@ -72,7 +72,6 @@ class Lamp(Dyson):
         for frame in auth.start():
             log.debug("TX: %s", message.hex())
             await self.connection.write(Handshake.Characteristic.WRITE, frame)
-            # await asyncio.sleep(0.03)
 
         # Step 3: receive challenge, send response, wait for authorization.
         while not self.state.authenticated:

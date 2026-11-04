@@ -5,6 +5,9 @@ from fellow.stagg.state      import State
 from fellow.stagg.connection import Connection
 from fellow.stagg.parser     import Parser
 
+import logging
+log = logging.getLogger(__name__)
+
 NAME            = 'FELLOW'
 CHARACTERISTIC  = '00002a80-0000-1000-8000-00805f9b34fb'
 PASSWORD        = b'\xef\xdd\x0b' + b'012345678901234' + b'\x9am'
@@ -38,11 +41,9 @@ class Kettle:
             await self.connection.write(CHARACTERISTIC, PASSWORD)
             create_task(self.run())
         except Exception as e:
-            print(f"{address} not found!")
-            print(e)
+            log.error("Could not connect to %s: %s", address, e)
 
     async def run(self):
         while True:
             data = await self.queue.get()
             self.parser.parse(data)
-            # print(self.state)
